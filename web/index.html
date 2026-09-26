@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#141417">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="/static/manifest.json">
+<title>pose-mirror — strike a pose, find your reference</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>&#129333; pose-mirror</h1>
+  <p class="subtitle">Strike a pose in front of your camera &mdash; get matching reference images.</p>
+  <div id="status" class="status">connecting&hellip;</div>
+</header>
+
+<main>
+  <section class="panel camera-panel">
+    <h2>Live pose</h2>
+    <div class="stream-wrap">
+      <img id="stream" src="/api/stream" alt="camera stream">
+      <div id="no-camera" class="no-camera hidden">
+        Camera unavailable.<br>Matches still work once an index is built.
+      </div>
+    </div>
+    <div class="controls">
+      <label>Top-K
+        <input id="topk" type="range" min="4" max="24" step="1" value="9">
+        <span id="topk-val">9</span>
+      </label>
+      <label class="check">
+        <input id="mirror" type="checkbox"> Mirror X
+      </label>
+      <button id="pause" type="button">Pause</button>
+    </div>
+  </section>
+
+  <section class="panel matches-panel">
+    <h2>Matching references <span id="count"></span></h2>
+    <div id="grid" class="grid"></div>
+  </section>
+</main>
+
+<div id="lightbox" class="lightbox hidden">
+  <img id="lightbox-img" src="" alt="enlarged reference">
+  <div id="lightbox-cap" class="caption"></div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

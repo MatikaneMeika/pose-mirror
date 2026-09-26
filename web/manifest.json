@@ -1,0 +1,11 @@
+{
+  "background_color": "#141417",
+  "description": "Strike a pose, find matching reference images.",
+  "display": "standalone",
+  "icons": [],
+  "name": "pose-mirror",
+  "orientation": "portrait",
+  "short_name": "pose-mirror",
+  "start_url": "/",
+  "theme_color": "#141417"
+}

@@ -1,0 +1,135 @@
+/* pose-mirror UI: dark, artist-friendly. */
+:root {
+  --bg: #141417;
+  --panel: #1d1d22;
+  --border: #2c2c33;
+  --text: #e8e8ec;
+  --muted: #9a9aa5;
+  --accent: #7dd87d;
+  --warn: #e0a458;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+header {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+header h1 { margin: 0; font-size: 1.4rem; }
+.subtitle { margin: 0; color: var(--muted); font-size: 0.9rem; }
+.status {
+  margin-left: auto;
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+}
+.status.ok { color: var(--accent); border-color: var(--accent); }
+.status.warn { color: var(--warn); border-color: var(--warn); }
+
+main {
+  display: grid;
+  grid-template-columns: minmax(320px, 480px) 1fr;
+  gap: 16px;
+  padding: 16px 20px;
+}
+@media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+}
+.panel h2 { margin: 0 0 10px; font-size: 1.05rem; }
+.panel h2 span { color: var(--muted); font-weight: normal; font-size: 0.85rem; }
+
+.stream-wrap {
+  position: relative;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+.stream-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.no-camera {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; color: var(--warn); padding: 20px;
+}
+.hidden { display: none !important; }
+
+.controls {
+  display: flex; align-items: center; gap: 18px;
+  margin-top: 12px; flex-wrap: wrap;
+  font-size: 0.9rem; color: var(--muted);
+}
+.controls label { display: flex; align-items: center; gap: 8px; }
+.controls input[type="range"] { accent-color: var(--accent); }
+.controls button {
+  background: var(--border); color: var(--text);
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 6px 14px; cursor: pointer; font-size: 0.9rem;
+}
+.controls button:hover { border-color: var(--accent); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+.card {
+  background: #101013;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: transform 0.12s ease;
+}
+.card:hover { transform: scale(1.03); border-color: var(--accent); }
+.card img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; }
+.card .meta {
+  padding: 6px 8px; font-size: 0.75rem; color: var(--muted);
+  display: flex; justify-content: space-between; gap: 6px;
+}
+.card .score { color: var(--accent); font-weight: bold; }
+.card .lic { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.empty { color: var(--muted); padding: 24px; text-align: center; grid-column: 1 / -1; }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 50;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  cursor: zoom-out; padding: 24px;
+}
+.lightbox img { max-width: 90vw; max-height: 82vh; border-radius: 8px; }
+.lightbox .caption { margin-top: 10px; color: var(--muted); font-size: 0.85rem; }
+
+/* ---- responsive: phone portrait ---- */
+@media (max-width: 900px) {
+  main { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  header { padding: 10px 12px; gap: 8px; }
+  header h1 { font-size: 1.15rem; }
+  .subtitle { display: none; }
+  .status { margin-left: 0; font-size: 0.75rem; }
+  main { padding: 10px 12px; gap: 10px; }
+  .panel { padding: 10px; }
+  /* camera on top, compact in portrait */
+  .stream-wrap { aspect-ratio: 16 / 10; }
+  .controls { gap: 12px; font-size: 0.85rem; }
+  .controls input[type="range"] { width: 110px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 8px; }
+  .card .meta { font-size: 0.7rem; }
+}

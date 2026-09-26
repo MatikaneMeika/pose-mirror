@@ -1,0 +1,6 @@
+fastapi>=0.110
+uvicorn>=0.29
+opencv-python>=4.9
+mediapipe>=0.10.14
+numpy>=1.26
+requests>=2.31

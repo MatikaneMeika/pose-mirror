@@ -1,0 +1,18 @@
+# Downloaded data and models are never committed.
+data/
+models/
+dist/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+*.log
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
