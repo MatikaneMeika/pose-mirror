@@ -9,6 +9,18 @@ tracking — everything runs on your own machine.
 
 [中文说明](README.zh-CN.md)
 
+## Download (Windows, no Python needed)
+
+Grab `pose-mirror.exe` from the
+[Releases page](https://github.com/MatikaneMeika/pose-mirror/releases),
+put it in its own folder, and double-click it. On first launch it downloads
+the pose model (~9 MB) next to the exe; afterwards it runs fully offline.
+Then open http://127.0.0.1:8000 in your browser.
+
+> Want the exe built for a new version? It is produced automatically by
+> GitHub Actions whenever a `v*` tag is pushed (see
+> `.github/workflows/build.yml`).
+
 ## Quickstart
 
 **Windows:** double-click `install.bat`.

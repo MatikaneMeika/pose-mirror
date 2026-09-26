@@ -6,6 +6,16 @@
 
 [English](README.md)
 
+## 下载（Windows，免装 Python）
+
+去 [Releases 页面](https://github.com/MatikaneMeika/pose-mirror/releases)
+下载 `pose-mirror.exe`，单独放一个文件夹里，双击运行。首次启动会自动
+下载姿态模型（约 9 MB）到 exe 旁边，之后完全离线运行。然后在浏览器打开
+http://127.0.0.1:8000。
+
+> exe 由 GitHub Actions 在每次推送 `v*` 标签时自动构建
+>（见 `.github/workflows/build.yml`）。
+
 ## 快速开始
 
 **Windows：** 双击 `install.bat`。

@@ -6,6 +6,7 @@ into ``models/`` on first run. All public functions are thread-safe.
 
 from __future__ import annotations
 
+import sys
 import threading
 import urllib.request
 from pathlib import Path
@@ -47,8 +48,28 @@ _landmarker = None
 
 
 def project_root() -> Path:
-    """Return the pose-mirror project root directory."""
+    """Return the pose-mirror project root directory.
+
+    When running from a PyInstaller bundle, the "project root" is the
+    directory containing the executable -- that is where writable data
+    (``models/``, ``data/``) lives. Read-only bundled assets (``web/``)
+    come from :func:`resource_path` instead.
+    """
+    if getattr(sys, "frozen", False):
+        return Path(sys.executable).resolve().parent
     return Path(__file__).resolve().parents[2]
+
+
+def resource_path(*parts: str) -> Path:
+    """Path to a read-only resource bundled with the application.
+
+    In a PyInstaller bundle this resolves inside the extracted package
+    (``sys._MEIPASS``); in a source checkout it resolves under the
+    project root.
+    """
+    if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+        return Path(sys._MEIPASS, *parts)  # type: ignore[attr-defined]
+    return project_root().joinpath(*parts)
 
 
 def default_model_path() -> Path:

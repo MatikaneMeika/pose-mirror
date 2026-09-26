@@ -35,10 +35,11 @@ from .pose import (
     extract_pose,
     normalize_pose,
     project_root,
+    resource_path,
 )
 
 ROOT = project_root()
-WEB_DIR = ROOT / "web"
+WEB_DIR = resource_path("web")
 
 state = {
     "frame_jpeg": None,          # latest annotated JPEG bytes
