@@ -21,6 +21,15 @@ Then open http://127.0.0.1:8000 in your browser.
 > GitHub Actions whenever a `v*` tag is pushed (see
 > `.github/workflows/build.yml`).
 
+## Mobile app (Android)
+
+There is a native Android client:
+[pose-mirror-android](https://github.com/MatikaneMeika/pose-mirror-android).
+It runs fully offline and independently — CameraX + MediaPipe PoseLandmarker
+on your phone, searching the same portable index format. The two apps never
+talk to each other; the only thing they share is the index file layout
+(`docs/INDEX_FORMAT.md`).
+
 ## Quickstart
 
 **Windows:** double-click `install.bat`.

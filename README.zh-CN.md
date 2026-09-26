@@ -16,6 +16,14 @@ http://127.0.0.1:8000。
 > exe 由 GitHub Actions 在每次推送 `v*` 标签时自动构建
 >（见 `.github/workflows/build.yml`）。
 
+## 手机版（Android）
+
+另有原生安卓客户端：
+[pose-mirror-android](https://github.com/MatikaneMeika/pose-mirror-android)。
+完全离线、独立运行——手机上用 CameraX + MediaPipe PoseLandmarker 实时识别姿态，
+搜索同一套可移植索引格式。两端之间没有任何网络连接，唯一的共同点是索引文件
+格式（`docs/INDEX_FORMAT.md`）。
+
 ## 快速开始
 
 **Windows：** 双击 `install.bat`。
